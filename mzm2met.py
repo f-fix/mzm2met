@@ -90,7 +90,7 @@ def apply_lzss_ofss(mzm, obuf, lzss_ofsss):
         )
         lzss_prg_ofs = lzss_prg_ofs1
         while (
-            (lzss_prg_ofs in range(lzss_prg_ofs1, lzss_prg_ofs2))
+            (lzss_prg_ofs in range(lzss_prg_ofs1, 1 + lzss_prg_ofs2))
             and (lzss_prg_ofs2 in range(len(obuf)))
             and (lzss_mzm_ofs in range(len(mzm)))
         ):
@@ -101,7 +101,7 @@ def apply_lzss_ofss(mzm, obuf, lzss_ofsss):
             pos = 0x80
             while (
                 pos
-                and (lzss_prg_ofs in range(lzss_prg_ofs1, lzss_prg_ofs2))
+                and (lzss_prg_ofs in range(lzss_prg_ofs1, 1 + lzss_prg_ofs2))
                 and (lzss_mzm_ofs in range(len(mzm)))
             ):
                 if lzss_mask & pos:
@@ -117,7 +117,7 @@ def apply_lzss_ofss(mzm, obuf, lzss_ofsss):
                             f"                 LZSS_REP 0x{lzss_r1:02X} 0x{lzss_r2:02X} => lzss_reps {lzss_reps}, lzss_deflection {lzss_deflection} to 0x{lzss_prg_ofs + lzss_deflection:05X}"
                         )
                     while lzss_reps and (
-                        lzss_prg_ofs in range(lzss_prg_ofs1, lzss_prg_ofs2)
+                        lzss_prg_ofs in range(lzss_prg_ofs1, 1 + lzss_prg_ofs2)
                     ):
                         lzss_rbyt = obuf[lzss_prg_ofs + lzss_deflection :][:1]
                         if debug_lzss:
